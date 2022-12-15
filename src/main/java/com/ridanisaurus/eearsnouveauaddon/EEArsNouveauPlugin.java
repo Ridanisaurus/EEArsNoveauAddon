@@ -1,4 +1,4 @@
-package com.ridanisaurus.eemodaddon;
+package com.ridanisaurus.eearsnouveauaddon;
 
 import com.ridanisaurus.emendatusenigmatica.api.EmendatusDataRegistry;
 import com.ridanisaurus.emendatusenigmatica.api.IEmendatusPlugin;
@@ -9,8 +9,8 @@ import net.minecraft.data.DataGenerator;
 
 import java.util.List;
 
-@EmendatusPluginReference(modid = EEMODAddon.MOD_ID, name = "config")
-public class EEMODPlugin implements IEmendatusPlugin {
+@EmendatusPluginReference(modid = EEArsNouveauAddon.MOD_ID, name = "config")
+public class EEArsNouveauPlugin implements IEmendatusPlugin {
 	@Override
 	public void load(EmendatusDataRegistry emendatusDataRegistry) {
 
@@ -23,7 +23,7 @@ public class EEMODPlugin implements IEmendatusPlugin {
 
 	@Override
 	public void registerDynamicDataGen(DataGenerator generator, EmendatusDataRegistry registry) {
-
+		generator.addProvider(true, new EEArsNouveauDataGen.Recipes(generator, registry));
 	}
 
 	@Override
