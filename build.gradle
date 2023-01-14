@@ -21,7 +21,7 @@ def ENV = System.getenv()
 
 version = "${mod_version}-build.${ENV.GITHUB_RUN_NUMBER ?: 9999}+mc${mc_version}"
 group = 'com.ridanisaurus'
-archivesBaseName = 'EEArsNouveauAddon'
+archivesBaseName = 'EE_Ars_Nouveau_Addon'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
@@ -112,7 +112,7 @@ dependencies {
 jar {
     manifest {
         attributes([
-                "Specification-Title"     : "eearsnouveauaddon",
+                "Specification-Title"     : "ee_ars_nouveau_addon",
                 "Specification-Vendor"    : "Ridanisaurus",
                 "Specification-Version"   : "1", // We are version 1 of ourselves
                 "Implementation-Title"    : project.name,
@@ -165,7 +165,8 @@ if (ENV.CURSE_DEPLOY) {
             mainArtifact(jar) {
                 displayName = "EEArsNouveauAddon-${mc_version}-${mod_version}"
                 relations {
-                    optionalDependency "emendatus-enigmatica"
+                    requiredDependency "emendatus-enigmatica"
+                    requiredDependency "ars-nouveau"
                 }
             }
             changelog = file("changelog.md") // pull the contents of the changelog.md
